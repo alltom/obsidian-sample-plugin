@@ -92,6 +92,15 @@ Linting (ESLint) and formatting (Prettier) are enforced by `npm run build`. Use 
 - Persist settings using `this.loadData()` / `this.saveData()`.
 - Use stable command IDs; avoid renaming once released.
 
+## Icons
+
+- **Always add icons** when the API supports them. Icons improve discoverability and visual recognition.
+- Commands: Always include the `icon` property with an appropriate Lucide icon name.
+- Menu items: Use `.setIcon()` when adding context menu items.
+- Ribbon actions: Already require an icon parameter.
+- Available icons: Lucide icon library (https://lucide.dev/) plus built-in Obsidian icons.
+- Reference: https://docs.obsidian.md/Plugins/User+interface/Icons
+
 ## Versioning & releases
 
 - Bump `version` in `manifest.json` (SemVer) and update `versions.json` to map plugin version → minimum app version.
@@ -148,6 +157,7 @@ Follow Obsidian's **Developer Policies** and **Plugin Guidelines**. In particula
 **Do**
 
 - Add commands with stable IDs (don't rename once released).
+- Always add icons to commands, menu items, and other UI elements that support them.
 - Provide defaults and validation in settings.
 - Write idempotent code paths so reload/unload doesn't leak listeners or intervals.
 - Use `this.register*` helpers for everything that needs cleanup.
@@ -207,6 +217,7 @@ export function registerCommands(plugin: Plugin) {
 	plugin.addCommand({
 		id: "do-something",
 		name: "Do something",
+		icon: "sparkles",
 		callback: () => doSomething(plugin),
 	});
 }
@@ -218,6 +229,7 @@ export function registerCommands(plugin: Plugin) {
 this.addCommand({
 	id: "your-command-id",
 	name: "Do the thing",
+	icon: "wand",
 	callback: () => this.doTheThing(),
 });
 ```

@@ -27,6 +27,7 @@ export default class MyPlugin extends Plugin {
 		this.addCommand({
 			id: "open-modal-simple",
 			name: "Open modal (simple)",
+			icon: "popup",
 			callback: () => {
 				new SampleModal(this.app).open();
 			},
@@ -35,6 +36,7 @@ export default class MyPlugin extends Plugin {
 		this.addCommand({
 			id: "replace-selected",
 			name: "Replace selected content",
+			icon: "replace",
 			editorCallback: (editor: Editor) => {
 				editor.replaceSelection("Sample editor command");
 			},
@@ -43,6 +45,7 @@ export default class MyPlugin extends Plugin {
 		this.addCommand({
 			id: "open-modal-complex",
 			name: "Open modal (complex)",
+			icon: "file-check",
 			checkCallback: (checking: boolean) => {
 				// Conditions to check
 				const markdownView =
